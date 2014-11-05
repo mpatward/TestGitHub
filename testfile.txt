@@ -1,3 +1,252 @@
 Lets try adding a new file to git repository.
 
 http://www.youtube.com/watch?v=73I5dRucCds
+
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ ls
+README.md
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ vim README.md
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git add README.md
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git commit -help
+usage: git commit [options] [--] <pathspec>...
+
+    -q, --quiet           suppress summary after successful commit
+    -v, --verbose         show diff in commit message template
+
+Commit message options
+    -F, --file <file>     read message from file
+    --author <author>     override author for commit
+    --date <date>         override date for commit
+    -m, --message <message>
+                          commit message
+    -c, --reedit-message <commit>
+                          reuse and edit message from specified commit
+    -C, --reuse-message <commit>
+                          reuse message from specified commit
+    --fixup <commit>      use autosquash formatted message to fixup specified co
+mmit
+    --squash <commit>     use autosquash formatted message to squash specified c
+ommit
+    --reset-author        the commit is authored by me now (used with -C/-c/--am
+end)
+    -s, --signoff         add Signed-off-by:
+    -t, --template <file>
+                          use specified template file
+    -e, --edit            force edit of commit
+    --cleanup <default>   how to strip spaces and #comments from message
+    --status              include status in commit message template
+    -S, --gpg-sign[=<key id>]
+                          GPG sign commit
+
+Commit contents options
+    -a, --all             commit all changed files
+    -i, --include         add specified files to index for commit
+    --interactive         interactively add files
+    -p, --patch           interactively add changes
+    -o, --only            commit only specified files
+    -n, --no-verify       bypass pre-commit hook
+    --dry-run             show what would be committed
+    --short               show status concisely
+    --branch              show branch information
+    --porcelain           machine-readable output
+    --long                show status in long format (default)
+    -z, --null            terminate entries with NUL
+    --amend               amend previous commit
+    --no-post-rewrite     bypass post-rewrite hook
+    -u, --untracked-files[=<mode>]
+                          show untracked files, optional modes: all, normal, no.
+ (Default: all)
+
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git commit -m "simple message for confirming update"
+[master a23feaa] simple message for confirming update
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git log
+commit a23feaa425fb76521728f604ecd140a57ba56e6a
+Author: mpatward <patwardhan.mandar@gmail.com>
+Date:   Tue Nov 4 21:08:09 2014 -0700
+
+    simple message for confirming update
+
+commit f772e92fa613267996dc8641da04cf45a90c88b3
+Author: Mandar Patwardhan <patwardhan.mandar@gmail.com>
+Date:   Tue Nov 4 20:50:24 2014 -0700
+
+    Initial commit
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git remote add origin https://github.com/mpatward/TestGitHub.git
+fatal: remote origin already exists.
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git push -u origin master
+Username for 'https://github.com': mpatward
+Password for 'https://mpatward@github.com':
+Counting objects: 5, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 335 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/mpatward/TestGitHub.git
+   f772e92..a23feaa  master -> master
+Branch master set up to track remote branch master from origin.
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ touch testfile.txt
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ ls
+README.md  testfile.txt
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ vim testfile.txt
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        testfile.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git add .
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git commit -m "text file added"
+[master f30a5d3] text file added
+ 1 file changed, 1 insertion(+)
+ create mode 100644 testfile.txt
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git log
+commit f30a5d3771fc600a51c5cc1d6f55ab59adac9e1f
+Author: mpatward <patwardhan.mandar@gmail.com>
+Date:   Tue Nov 4 21:15:57 2014 -0700
+
+    text file added
+
+commit a23feaa425fb76521728f604ecd140a57ba56e6a
+Author: mpatward <patwardhan.mandar@gmail.com>
+Date:   Tue Nov 4 21:08:09 2014 -0700
+
+    simple message for confirming update
+
+commit f772e92fa613267996dc8641da04cf45a90c88b3
+Author: Mandar Patwardhan <patwardhan.mandar@gmail.com>
+Date:   Tue Nov 4 20:50:24 2014 -0700
+
+    Initial commit
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Username for 'https://github.com': mpatward
+Password for 'https://mpatward@github.com':
+Counting objects: 4, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 321 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/mpatward/TestGitHub.git
+   a23feaa..f30a5d3  master -> master
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git pull origin master
+From https://github.com/mpatward/TestGitHub
+ * branch            master     -> FETCH_HEAD
+Already up-to-date.
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git pull origin master
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From https://github.com/mpatward/TestGitHub
+ * branch            master     -> FETCH_HEAD
+   f30a5d3..1edc4ec  master     -> origin/master
+Updating f30a5d3..1edc4ec
+Fast-forward
+ testfile.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$ git pull origin master
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From https://github.com/mpatward/TestGitHub
+ * branch            master     -> FETCH_HEAD
+   1edc4ec..0d7062f  master     -> origin/master
+Updating 1edc4ec..0d7062f
+Fast-forward
+ testfile.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+mandar@MANDAR-LAPTOP ~/Desktop/TestGitHub (master)
+$
